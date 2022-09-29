@@ -119,13 +119,9 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println("array = "+ Arrays.toString(parsed.findFieldForType(JBBPFieldArrayUByte.class).getArray()));
         //System.out.println("int="+sizeof(int))
 
-        my_functions a=new my_functions();
-        //System.out.println("my_functions="+my_functions.getAnyData());
-        //System.out.println("my_functions.add="+my_functions.add(5,6));
-
         // Тест запаковки , координат мыши
         final byte [] data_array_1=my_functions.get_data_from_mosqito_as_bytes("/com/sunny/management/mouse/move","{'x':'100','y':'50'}");
-        System.out.println("Topic NEX= "+data_array_1);   // {'x':'100','y':'50'}
+        System.out.println("Topic1 NEX= "+data_array_1);   // {'x':'100','y':'50'}
         // Тест распаковки
         @Bin
         class Parsed_1 { byte flag; byte l; byte type; short x; short y;short  sum;}
@@ -135,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
         if((byte)parsed_d1.sum==(byte)(0xc8a8))Log.i("! NEX", "flag="+data_array_1[0]);
 
 
+        // Тест запаковки , координат мыши
+        final byte [] data_array_2=my_functions.get_data_from_mosqito_as_bytes("/com/sunny/execution/hardware/led","{'address':'10','brightness':'0','rgb':'#000000','duration':'0','function':'none'}");
+        System.out.println("Topic2 NEX= "+data_array_2);   // {'x':'100','y':'50'}
 
     }
 }
